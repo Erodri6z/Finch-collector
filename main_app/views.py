@@ -33,6 +33,10 @@ class FinchCreate(CreateView):
   fields = ['name', 'color', 'description', 'age']
   success_url ='/finches/'
 
+  def form_valid(self, form):
+    form.instance.user = self.request.user 
+    return super().form_valid(form)
+
 class FinchUpdate(UpdateView):
   model = Finch
   fields = '__all__'
