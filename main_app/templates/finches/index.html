@@ -13,11 +13,13 @@
 <section class="card-container">
   {% for finch in finches %}
     <div class="card">
-      <div class="card-content">
-        <h2 class="card-title">{{ finch.name }}</h2>
-          <p>A {{ finch.age }} month old {{ finch.color }} finch</p>
-        <p><small>{{ finch.description }}</small></p>
-      </div>
+      <a href="{% url 'finches_detail' finch.id %}">
+        <div class="card-content">
+          <h2 class="card-title">{{ finch.name }}</h2>
+            <p>A {{ finch.age }} month old {{ finch.color }} finch</p>
+          <p><small>{{ finch.description }}</small></p>
+        </div>
+      </a>
     </div>
   {% endfor %}
 </section>

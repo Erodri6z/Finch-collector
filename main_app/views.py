@@ -1,15 +1,5 @@
 from django.shortcuts import render
-class Finch:
-  def __init__(self, name, color, description, age):
-    self.name = name
-    self.color = color
-    self.description = description
-    self.age = age
-
-finches = [
-  Finch('Bob', 'Red', 'Nicknamed "Big red"', 2),
-  Finch('Dylan', 'Blue', 'Hes a hothead', 2)
-]
+from .models import Finch
 
 
 # Define the home view
@@ -20,4 +10,10 @@ def about(request):
   return render(request, 'about.html')
 
 def finches_index(request):
+  finches = Finch.objects.all()
   return render(request, 'finches/index.html', { 'finches': finches })
+
+def finches_detail(request, finch_id):
+  finch = Finch.objects.get(id=finch_id)
+  return render(request, 'finches/detail.html', { 'finch': finch })
+
