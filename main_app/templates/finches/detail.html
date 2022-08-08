@@ -16,6 +16,11 @@
     <h1>{{ finch.name }}</h1>
       <h2>A {{ finch.age }} month old {{ finch.color }} finch</h2>
     <p>{{ finch.description }}</p>
+    <div class="cat-actions">
+      <a href="{% url 'finches_update' finch.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'finches_delete' finch.id %}" class="btn danger">Delete</a>
+    </div>
+
   </div>
 </section>
 
